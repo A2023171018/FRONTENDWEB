@@ -57,8 +57,15 @@ function Eventos() {
   ];
 
   const handleLogout = () => {
+    // ✅ Limpiar localStorage
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    
+    // Cerrar el menú
     setShowLogoutMenu(false);
-    navigate("/");
+    
+    // Redirigir a login
+    navigate("/", { replace: true });
   };
 
   const filteredEventos = eventosData.filter(evento =>

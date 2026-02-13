@@ -5,17 +5,49 @@ import Dashboard from "./pages/Dashboard";
 import Eventos from "./pages/Eventos";
 import Usuarios from "./pages/Usuarios";
 import Reportes from "./pages/Reportes";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Rutas públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/eventos" element={<Eventos />} />
-        <Route path="/usuarios" element={<Usuarios />} />
-        <Route path="/reportes" element={<Reportes />} />
+        
+        {/* Rutas protegidas */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/eventos" 
+          element={
+            <ProtectedRoute>
+              <Eventos />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/usuarios" 
+          element={
+            <ProtectedRoute>
+              <Usuarios />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/reportes" 
+          element={
+            <ProtectedRoute>
+              <Reportes />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </BrowserRouter>
   );

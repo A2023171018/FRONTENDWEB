@@ -34,8 +34,15 @@ function Dashboard() {
   const maxValue = Math.max(...chartData.map(d => d.value));
 
   const handleLogout = () => {
+    // ✅ LIMPIAR localStorage
+    localStorage.removeItem("user");
+    localStorage.removeItem("token"); // Si usas token
+    
+    // Cerrar el menú
     setShowLogoutMenu(false);
-    navigate("/");
+    
+    // Redirigir a login
+    navigate("/", { replace: true });
   };
 
   return (
