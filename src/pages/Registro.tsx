@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Login.css";
 
 function Registro() {
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name_user: "",
@@ -41,6 +42,28 @@ function Registro() {
     setLoading(true);
 
     try {
+const password = formData.pass_user;
+
+if (password.length < 8) {
+  setError("La contraseña debe tener al menos 8 caracteres");
+  return;
+}
+
+if (password.length > 72) {
+  setError("La contraseña no puede tener más de 72 caracteres");
+  return;
+}
+
+if (!/\d/.test(password)) {
+  setError("La contraseña debe incluir al menos un número");
+  return;
+}
+
+if (!/[!@#$%^&*(),.?":{}|<>_\-+=/\\[\]]/.test(password)) {
+  setError("La contraseña debe incluir al menos un caracter especial");
+  return;
+}
+
       const response = await fetch("http://localhost:8000/register", {
         method: "POST",
         headers: {

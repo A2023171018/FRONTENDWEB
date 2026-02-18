@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, field_validator
 from typing import Optional
+import re
 
 class LoginRequest(BaseModel):
     email_user: EmailStr
@@ -11,6 +12,29 @@ class RegisterRequest(BaseModel):
     pass_user: str
     matricula_user: int
     id_rol: int = 2
+
+    @field_validator("pass_user")
+    @classmethod
+    def validate_password(cls, v):
+
+        # 1. Longitud mínima
+        if len(v) < 8:
+            raise ValueError("La contraseña debe tener al menos 8 caracteres")
+
+        # 2. Límite bcrypt
+        if len(v) > 72:
+            raise ValueError("La contraseña no puede tener más de 72 caracteres")
+
+        # 3. Al menos un número
+        if not re.search(r"\d", v):
+            raise ValueError("La contraseña debe contener al menos un número")
+
+        # 4. Al menos un caracter especial
+        if not re.search(r"[!@#$%^&*(),.?\":{}|<>_\-+=/\\[\]]", v):
+            raise ValueError("La contraseña debe contener al menos un caracter especial")
+
+        return v
+
 
 class UserResponse(BaseModel):
     id_user: int
