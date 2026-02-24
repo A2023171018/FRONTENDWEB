@@ -1,18 +1,25 @@
 const API_URL = "http://127.0.0.1:8000";
 
-export async function apiFetch(endpoint: string, options: RequestInit = {}) {
-  const response = await fetch(`${API_URL}${endpoint}`, {
+export async function registerUser(data: any) {
+  const response = await fetch(`${API_URL}/register`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(options.headers || {}),
     },
-    ...options,
+    body: JSON.stringify(data),
   });
 
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || "Error en la API");
-  }
+  return response.json();
+}
+
+export async function loginUser(data: any) {
+  const response = await fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
   return response.json();
 }
