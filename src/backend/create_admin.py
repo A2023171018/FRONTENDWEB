@@ -13,7 +13,6 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
-# Datos del admin
 nombre = "Administrador2"
 email = "admin@gmail.com"
 password = "admin123."

@@ -4,9 +4,6 @@ import re
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-# ============================
-# ✅ VALIDAR CONTRASEÑA
-# ============================
 def validate_password(password: str):
 
     # mínimo 8 caracteres

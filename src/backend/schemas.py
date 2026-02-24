@@ -11,7 +11,7 @@ class EventoBase(BaseModel):
     id_profe: Optional[int] = None
     id_user: Optional[int] = None
 
-
+##lol
 class EventoCreate(EventoBase):
     pass
 

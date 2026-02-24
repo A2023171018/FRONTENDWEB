@@ -15,9 +15,6 @@ app = FastAPI()
 
 app.include_router(eventos_router)
 
-# ============================
-# 🌍 Configuración CORS
-# ============================
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],

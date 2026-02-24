@@ -5,9 +5,7 @@ from typing import List
 
 router = APIRouter(prefix="/eventos", tags=["Eventos"])
 
-# ===============================
-# GET TODOS LOS EVENTOS
-# ===============================
+
 @router.get("/", response_model=List[EventoResponse])
 def get_eventos():
     db = get_db_connection()
