@@ -162,7 +162,7 @@ if (!/[!@#$%^&*(),.?":{}|<>_\-+=/\\[\]]/.test(password)) {
               id="matricula_user"
               name="matricula_user"
               className="form-input"
-              placeholder="Ej. 2022374589"
+              placeholder="123456"
               value={formData.matricula_user}
               onChange={handleChange}
               required
@@ -179,7 +179,7 @@ if (!/[!@#$%^&*(),.?":{}|<>_\-+=/\\[\]]/.test(password)) {
               id="pass_user"
               name="pass_user"
               className="form-input"
-              placeholder="Mínimo 8 caracteres"
+              placeholder="Mínimo 6 caracteres"
               value={formData.pass_user}
               onChange={handleChange}
               required
